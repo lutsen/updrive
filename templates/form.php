@@ -16,7 +16,12 @@
 						<div class="form-group">
 							<label for="folder_id">Folder to upload to</label>
 							<select class="form-control" id="folder_id" name="folder_id">
-<?php foreach ($folders as $name => $id): ?>
+<?php
+
+// Show all available Google Drive folders
+foreach ($folders as $name => $id):
+
+?>
 								<option value="<?= $id ?>"><?= $name ?></option>
 <?php endforeach; ?>
 							</select>
