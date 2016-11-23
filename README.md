@@ -86,4 +86,4 @@ The access scope to the Google Drive is defined here to. The UpDrive default is 
 
 
 
-UpDrive is a project of [Lútsen Stellingwerff](http://lutsen.land/) from [HoverKraft](http://www.hoverkraft.nl/), and started as a project for [Supersolid](https://www.supersolid.nl/).
+UpDrive is a project of [Lútsen Stellingwerff](http://lutsen.land/) from [HoverKraft](http://www.hoverkraft.nl/), and started as a project for [Supersolid](http://www.supersolid.nl/).
