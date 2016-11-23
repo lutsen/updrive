@@ -1,19 +1,19 @@
 UpDrive: Allow anyone to upload files to your Google Drive with a simple webform
---------------------------------------------------------------------------------
+================================================================================
 
 With a simple webform, hosted on your own webserver, anyone you want can upload files to your Google Drive, in folders you specify. UpDrive is a project written in PHP. It uses the Google API client PHP SDK.
 
 
 
 Requirements
-============
+------------
 
 - PHP 5.5 or newer
 - [A Google API project](https://console.developers.google.com/apis/library)
 
 
 Install UpDrive
-===============
+---------------
 
 Install UpDrive and its dependencies with [Composer](https://getcomposer.org/) with this command: `$ php composer.phar create-project lutsen/updrive [project-name] 0.5`  
 (Replace [project-name] with the desired directory name for your new project)  
@@ -40,7 +40,7 @@ Download the json client secret file from you Google API project, rename it to *
 
 
 Use UpDrive
-===========
+-----------
 
 The first time you access UpDrive, you have to connect to the Google account of the Google Drive you want to use. After authorising the UpDrive web application, the OAuth credentials are saved in the *credentials.json* file. Now people can use the webform to upload files to your Google Drive.  
 
@@ -52,7 +52,7 @@ To reconnect UpDrive to a Google account, delete the *credentials.json* file fro
 
 
 UpDrive project structure
-=========================
+-------------------------
 
 An overview of the directories of a UpDrive and their contents.
 
