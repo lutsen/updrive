@@ -1,4 +1,17 @@
 {
+	"name": "lutsen/updrive",
+	"type": "project",
+	"description": "Allow anyone to upload files to your Google Drive with a simple webform.",
+	"keywords": ["google drive","upload", "webform","file","share"],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Lútsen Stellingwerff",
+			"email": "lutsenstellingwerff@gmail.com",
+			"homepage": "http://www.hoverkraft.nl",
+			"role": "Developer"
+		}
+	],
 	"require": {
 		"php": ">=5.5.0",
 		"google/apiclient": "^2.0"
