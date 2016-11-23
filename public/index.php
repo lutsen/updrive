@@ -1,12 +1,22 @@
 <?php
 
-// With a little help of Stack Overflow
-// http://stackoverflow.com/questions/25707891/google-drive-php-api-simple-file-upload/25715084
-// http://stackoverflow.com/questions/25525471/google-oauth-2-0-refresh-token-for-web-application-with-public-access/25632241#25632241
+/**
+ * This is the main public file of UpDrive.
+ *
+ * When the credentials.js files is not yet created, this file shows the setup page.
+ * After that it shows the upload form.
+ * The POST request of the form is handled by this page as well.
+*/
 
 require_once '../init.php';
 
-// Get all folders in the drive
+/**
+ * Read the meta-data of all the folders in the connected Google Drive.
+ *
+ * @param object 	$service	A Google_Service_Drive object.
+ *
+ * @return array	An array with the folder name as the key and the folder id as the value.
+ */
 function getFolderList( $service ) {
 	$pageToken = null;
 	$result = array();
@@ -30,13 +40,13 @@ $filename = ROOT_PATH . '/credentials.json';
 $handle = fopen( $filename, 'r' );
 if ( $handle ) {
 
-	$error = false;
-	$message = false;
+	$error = false; // Error message shown in the form.php template
+	$message = false; // Message shown in the form.php template
 	try {
 
-		// Connect to Google Drive
-		
-		// Get credentials into a string
+		// Create new Google_Service_Drive $service object
+
+		// Read credentials into a string
 		$credentials = fread( $handle, filesize( $filename ) );
 		fclose($handle);
 
@@ -47,9 +57,10 @@ if ( $handle ) {
 		$service = new Google_Service_Drive($client);
 
 		// Post form
+		
 		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
-			// To do: Validation and sanitation
+			// TO DO: Validation and sanitation
 
 			// Check $_FILES['upfile']['error'] value.
 			if ( is_array($_FILES['upfile']['error']) ) {
@@ -67,6 +78,7 @@ if ( $handle ) {
 					throw new Exception('Unknown errors.');
 			}
 
+			// Create Google Drive file metadata object
 			$fileMetadata = new Google_Service_Drive_DriveFile(
 				array(
 					'name' => $_FILES['upfile']['name'],
@@ -75,9 +87,10 @@ if ( $handle ) {
 				)
 			);
 
-			// Read file
+			// Read uploaded file
 			$content = file_get_contents( $_FILES['upfile']['tmp_name'] );
 
+			// Create file on Google Drive
 			$file = $service->files->create( $fileMetadata, array(
 				'data' => $content,
 				'mimeType' => 'image/jpeg',
@@ -89,7 +102,7 @@ if ( $handle ) {
 
 		}
 
-		// Get all folder ID's
+		// Get all folder ID's to use in form.php and start.php templates.
 		// $folderNames is defined in config.php
 		$folders = array();
 		$folderList = getFolderList( $service ); // All folders on the Google drive
@@ -102,7 +115,7 @@ if ( $handle ) {
 		}
 
 	} catch (Exception $e) {
-		$error = $e->getMessage();
+		$error = $e->getMessage(); // Set error message for form.php template
 	}
 
 	// Show form

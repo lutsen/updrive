@@ -4,7 +4,12 @@
 					<p><b>For UpDrive to work, it has to be connected to a Google account. This connection has to be established only once.</b></p>
 					<p>All the files will be uploaded to the Google Drive in this account. Make sure the Google Drive in this account contains the following folders:</p>
 					<ul>
-<?php foreach ($folderNames as $name): ?>
+<?php
+
+// Show the names of all folders needed in the Google Drive
+foreach ($folderNames as $name):
+
+?>
 						<li><?= $name ?></li>
 <?php endforeach; ?>
 					</ul>
